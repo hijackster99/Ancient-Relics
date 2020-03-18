@@ -37,7 +37,7 @@ public class PedestalContainer extends Container{
 		return true;
 	}
 	
-	private void addPlayerSlots(IInventory playerInventory, int x, int y){
+	private void addPlayerSlots(PlayerInventory playerInventory, int x, int y){
 		for (int i = 0; i < 3; ++i)
         {
             for (int j = 0; j < 9; ++j)
