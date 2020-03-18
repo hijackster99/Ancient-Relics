@@ -29,7 +29,7 @@ public class PedestalContainer extends Container{
 		addPlayerSlots(inv, 8, 84);
 	}
 	public PedestalContainer(int windowId, PlayerInventory inv) {
-		super(ctPedestal, windowId);
+		this(windowId, inv, new ItemStackHandler());
 	}
 
 	@Override
