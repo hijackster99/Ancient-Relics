@@ -1,0 +1,13 @@
+{ "forge_marker": 1,
+	"defaults": { "model": "ancientrelics:block/ruby_relic_bright"
+	},
+	"variants": {
+		"facing=up": {"model": "ancientrelics:block/ruby_relic_bright", "x": 0},
+		"facing=down": {"model": "ancientrelics:block/ruby_relic_bright", "x": 180}, 
+		"facing=north": {"model": "ancientrelics:block/ruby_relic_bright", "x": 90}, 
+		"facing=south": {"model": "ancientrelics:block/ruby_relic_bright", "x": 270}, 
+		"facing=east": {"model": "ancientrelics:block/ruby_relic_bright", "x": 90, "y": 90},
+		"facing=west": {"model": "ancientrelics:block/ruby_relic_bright", "x": 90, "y": 270},
+		"inventory": [{}]
+	}
+}

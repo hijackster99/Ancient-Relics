@@ -1,0 +1,20 @@
+  {
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"XYX", 
+		" X ",
+		"XXX"
+	],
+	"key": {
+		"X": {
+			"item": "ancientrelics:infused_stone"
+		},
+		"Y": {
+			"item": "ancientrelics:peridot_relic_1"
+		}
+	},
+	"result": {
+		"item": "ancientrelics:pedestal"
+	}
+	
+    }

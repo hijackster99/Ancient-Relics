@@ -1,0 +1,11 @@
+{
+  "type": "ancientrelics:energize_recipes",
+  "main": {
+      "item": "ancientrelics:sapphire_relic"
+  },
+  "energy": 4000,
+  "result": {
+    "item": "ancientrelics:sapphire_relic_1",
+    "count": 1
+  }
+}

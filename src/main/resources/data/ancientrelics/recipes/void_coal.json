@@ -1,0 +1,11 @@
+{
+  "type": "ancientrelics:energize_recipes",
+  "main": {
+      "item": "minecraft:coal"
+  },
+  "energy": 800,
+  "result": {
+    "item": "ancientrelics:void_coal",
+    "count": 1
+  }
+}

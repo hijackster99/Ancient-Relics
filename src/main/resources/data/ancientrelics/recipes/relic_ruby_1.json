@@ -1,0 +1,11 @@
+{
+  "type": "ancientrelics:energize_recipes",
+  "main": {
+      "item": "ancientrelics:ruby_relic"
+  },
+  "energy": 4000,
+  "result": {
+    "item": "ancientrelics:ruby_relic_1",
+    "count": 1
+  }
+}

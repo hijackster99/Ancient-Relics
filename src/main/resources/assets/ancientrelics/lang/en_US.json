@@ -1,0 +1,30 @@
+{
+	"item.ancientrelics.ruby": "Ruby",
+	"item.ancientrelics.peridot": "Peridot",
+	"item.ancientrelics.sapphire": "Sapphire",
+	"item.ancientrelics.ruby_relic": "Relic",
+	"item.ancientrelics.peridot_relic": "Relic",
+	"item.ancientrelics.sapphire_relic": "Relic",
+	"item.ancientrelics.build_staff": "Relic Staff",
+	"item.ancientrelics.info_staff": "Relic Staff",
+	"item.ancientrelics.link_staff": "Relic Staff",
+	"item.ancientrelics.ruby_relic_1": "Relic",
+	"item.ancientrelics.peridot_relic_1": "Relic",
+	"item.ancientrelics.sapphire_relic_1": "Relic",
+	"item.ancientrelics.void_coal": "Void Coal",
+	"item.ancientrelics.void_charcoal": "Void Charcoal",
+	
+	"block.ancientrelics.infused_stone": "Infused Stone",
+	"block.ancientrelics.ritual_stone": "Ritual Stone",
+	"block.ancientrelics.extract_stone": "Ritual Stone",
+	"block.ancientrelics.energize_stone": "Ritual Stone",
+	"block.ancientrelics.ritual_stone_1": "Ritual Stone",
+	"block.ancientrelics.infuse_stone": "Ritual Stone",
+	"block.ancientrelics.ruby_ore": "Ruby Ore",
+	"block.ancientrelics.sapphire_ore": "Sapphire Ore",
+	"block.ancientrelics.peridot_ore": "Peridot Ore",
+	"block.ancientrelics.relay": "Relay",
+	"block.ancientrelics.pedestal": "Pedestal",
+	
+	"itemGroup.ancientrelics": "Ancient Relics"
+}

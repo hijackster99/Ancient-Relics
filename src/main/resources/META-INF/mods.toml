@@ -1,0 +1,9 @@
+modLoader="javafml" #mandatory
+loaderVersion="[28,)" #mandatory. 26 for 1.14.2, 27 for 1.14.3
+[[mods]] #mandatory
+modId="ancientrelics" #mandatory
+version="0.1" #mandatory
+displayName="Ancient Relics" #mandatory
+description='''
+A Magic Mod Based on the Discovery of Ancient Relics
+'''

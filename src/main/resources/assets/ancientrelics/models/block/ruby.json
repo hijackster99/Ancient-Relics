@@ -1,0 +1,78 @@
+{
+    "__comment": "Model generated using MrCrayfish's Model Creator (https://mrcrayfish.com/tools?id=mc)",
+    "textures": {
+        "particle": "ancientrelics:block/ruby_particle",
+        "placed_relic_parts": "ancientrelics:block/placed_relic_parts"
+    },
+    "display": {
+        "gui": {
+            "rotation": [ 30, 45, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.625, 0.625, 0.625 ]
+        },
+        "ground": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 3, 0 ],
+            "scale": [ 0.25, 0.25, 0.25 ]
+        },
+        "fixed": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "head": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "firstperson_righthand": {
+            "rotation": [ 0, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.4, 0.4, 0.4 ]
+        },
+        "thirdperson_righthand": {
+            "rotation": [ 75, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    },
+    "elements": [
+        {
+            "name": "Gem1",
+            "from": [ 5, 0, 6 ], 
+            "to": [ 11, 1, 10 ], 
+            "faces": {
+                "north": { "texture": "#placed_relic_parts", "uv": [ 0, 0, 6, 1 ] },
+                "east": { "texture": "#placed_relic_parts", "uv": [ 0, 0, 1, 4 ] },
+                "south": { "texture": "#placed_relic_parts", "uv": [ 0, 0, 6, 1 ] },
+                "west": { "texture": "#placed_relic_parts", "uv": [ 0, 0, 1, 4 ] },
+                "up": { "texture": "#placed_relic_parts", "uv": [ 0, 0, 6, 4 ] },
+                "down": { "texture": "#placed_relic_parts", "uv": [ 0, 0, 6, 4 ] }
+            }
+        },
+        {
+            "name": "Gem2",
+            "from": [ 6, 0, 5 ], 
+            "to": [ 10, 1, 6 ], 
+            "faces": {
+                "north": { "texture": "#placed_relic_parts", "uv": [ 0, 0, 1, 4 ] },
+                "east": { "texture": "#placed_relic_parts", "uv": [ 0, 0, 1, 1 ] },
+                "west": { "texture": "#placed_relic_parts", "uv": [ 0, 0, 1, 1 ] },
+                "up": { "texture": "#placed_relic_parts", "uv": [ 0, 0, 1, 4 ] },
+                "down": { "texture": "#placed_relic_parts", "uv": [ 0, 0, 1, 4 ] }
+            }
+        },
+        {
+            "name": "Gem3",
+            "from": [ 6, 0, 10 ], 
+            "to": [ 10, 1, 11 ], 
+            "faces": {
+                "east": { "texture": "#placed_relic_parts", "uv": [ 0, 0, 1, 1 ] },
+                "south": { "texture": "#placed_relic_parts", "uv": [ 0, 0, 1, 4 ] },
+                "west": { "texture": "#placed_relic_parts", "uv": [ 0, 0, 1, 1 ] },
+                "up": { "texture": "#placed_relic_parts", "uv": [ 0, 0, 1, 4 ] },
+                "down": { "texture": "#placed_relic_parts", "uv": [ 0, 0, 1, 4 ] }
+            }
+        }
+    ]
+}

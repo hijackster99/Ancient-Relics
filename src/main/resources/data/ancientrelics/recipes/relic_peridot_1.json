@@ -1,0 +1,11 @@
+{
+  "type": "ancientrelics:energize_recipes",
+  "main": {
+      "item": "ancientrelics:peridot_relic"
+  },
+  "energy": 4000,
+  "result": {
+    "item": "ancientrelics:peridot_relic_1",
+    "count": 1
+  }
+}

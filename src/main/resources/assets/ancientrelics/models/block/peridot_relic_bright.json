@@ -1,0 +1,161 @@
+{
+    "__comment": "Model generated using MrCrayfish's Model Creator (https://mrcrayfish.com/tools?id=mc)",
+    "textures": {
+        "particle": "ancientrelics:block/peridot_particle_bright",
+        "placed_relic_parts": "ancientrelics:block/placed_relic_parts",
+        "placed_relic_parts_bright": "ancientrelics:block/placed_relic_parts_bright"
+    },
+    "display": {
+        "gui": {
+            "rotation": [ 30, 45, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.625, 0.625, 0.625 ]
+        },
+        "ground": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 3, 0 ],
+            "scale": [ 0.25, 0.25, 0.25 ]
+        },
+        "fixed": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "head": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "firstperson_righthand": {
+            "rotation": [ 0, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.4, 0.4, 0.4 ]
+        },
+        "thirdperson_righthand": {
+            "rotation": [ 75, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    },
+    "elements": [
+        {
+            "name": "Gem1",
+            "from": [ 5, 0, 6 ], 
+            "to": [ 11, 1, 10 ], 
+            "faces": {
+                "up": { "texture": "#placed_relic_parts_bright", "uv": [ 0, 8, 6, 12 ] },
+                "down": { "texture": "#placed_relic_parts_bright", "uv": [ 0, 8, 6, 12 ] }
+            }
+        },
+        {
+            "name": "Gem2",
+            "from": [ 6, 0, 5 ], 
+            "to": [ 10, 1, 6 ], 
+            "faces": {
+                "up": { "texture": "#placed_relic_parts_bright", "uv": [ 0, 8, 1, 12 ] },
+                "down": { "texture": "#placed_relic_parts_bright", "uv": [ 0, 8, 1, 12 ] }
+            }
+        },
+        {
+            "name": "Gem3",
+            "from": [ 6, 0, 10 ], 
+            "to": [ 10, 1, 11 ], 
+            "faces": {
+                "up": { "texture": "#placed_relic_parts_bright", "uv": [ 0, 8, 1, 12 ] },
+                "down": { "texture": "#placed_relic_parts_bright", "uv": [ 0, 8, 1, 12 ] }
+            }
+        },
+        {
+            "name": "Stone1",
+            "from": [ 6, 0, 4 ], 
+            "to": [ 10, 1, 5 ], 
+            "faces": {
+                "north": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 4, 13 ] },
+                "east": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 1, 13 ] },
+                "west": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 1, 13 ] },
+                "up": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 4, 13 ] },
+                "down": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 4, 13 ] }
+            }
+        },
+        {
+            "name": "Stone2",
+            "from": [ 10, 0, 5 ], 
+            "to": [ 11, 1, 6 ], 
+            "faces": {
+                "north": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 1, 13 ] },
+                "east": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 1, 13 ] },
+                "up": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 1, 13 ] },
+                "down": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 1, 13 ] }
+            }
+        },
+        {
+            "name": "Stone3",
+            "from": [ 11, 0, 6 ], 
+            "to": [ 12, 1, 10 ], 
+            "faces": {
+                "north": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 1, 13 ] },
+                "east": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 4, 13 ] },
+                "south": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 1, 13 ] },
+                "up": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 4, 13 ] },
+                "down": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 4, 13 ] }
+            }
+        },
+        {
+            "name": "Stone4",
+            "from": [ 10, 0, 10 ], 
+            "to": [ 11, 1, 11 ], 
+            "faces": {
+                "east": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 1, 13 ] },
+                "south": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 1, 13 ] },
+                "up": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 1, 13 ] },
+                "down": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 1, 13 ] }
+            }
+        },
+        {
+            "name": "Stone5",
+            "from": [ 6, 0, 11 ], 
+            "to": [ 10, 1, 12 ], 
+            "faces": {
+                "east": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 1, 13 ] },
+                "south": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 4, 13 ] },
+                "west": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 1, 13 ] },
+                "up": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 4, 13 ] },
+                "down": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 4, 13 ] }
+            }
+        },
+        {
+            "name": "Stone6",
+            "from": [ 5, 0, 10 ], 
+            "to": [ 6, 1, 11 ], 
+            "faces": {
+                "south": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 1, 13 ] },
+                "west": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 1, 13 ] },
+                "up": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 1, 13 ] },
+                "down": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 1, 13 ] }
+            }
+        },
+        {
+            "name": "Stone7",
+            "from": [ 4, 0, 6 ], 
+            "to": [ 5, 1, 10 ], 
+            "faces": {
+                "north": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 1, 13 ] },
+                "south": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 1, 13 ] },
+                "west": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 4, 13 ] },
+                "up": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 4, 13 ] },
+                "down": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 4, 13 ] }
+            }
+        },
+        {
+            "name": "Stone8",
+            "from": [ 5, 0, 5 ], 
+            "to": [ 6, 1, 6 ], 
+            "faces": {
+                "north": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 1, 13 ] },
+                "west": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 1, 13 ] },
+                "up": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 1, 13 ] },
+                "down": { "texture": "#placed_relic_parts", "uv": [ 0, 12, 1, 13 ] }
+            }
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+{
+  "type": "ancientrelics:energize_recipes",
+  "main": {
+      "item": "minecraft:charcoal"
+  },
+  "energy": 800,
+  "result": {
+    "item": "ancientrelics:void_charcoal",
+    "count": 1
+  }
+}
