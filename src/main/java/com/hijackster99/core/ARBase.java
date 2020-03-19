@@ -1,35 +1,31 @@
 package com.hijackster99.core;
 
-import com.hijackster99.items.ARItems;
-import com.hijackster99.tileentities.TileEntityEnergizeStone;
-import com.hijackster99.tileentities.TileEntityExtractStone;
-import com.hijackster99.tileentities.TileEntityInfuseStone;
-import com.hijackster99.tileentities.TileEntityPedestal;
-import com.hijackster99.tileentities.TileEntityRelay;
 import com.hijackster99.blocks.ARBlocks;
 import com.hijackster99.blocks.containers.PedestalContainer;
 import com.hijackster99.blocks.containers.PedestalScreen;
 import com.hijackster99.core.recipes.EnergizeRecipeSerializer;
 import com.hijackster99.core.recipes.EnergizeRecipes;
 import com.hijackster99.core.worldgen.OreGenerator;
+import com.hijackster99.items.ARItems;
+import com.hijackster99.tileentities.TileEntityEnergizeStone;
+import com.hijackster99.tileentities.TileEntityExtractStone;
+import com.hijackster99.tileentities.TileEntityInfuseStone;
+import com.hijackster99.tileentities.TileEntityPedestal;
+import com.hijackster99.tileentities.TileEntityRelay;
+import com.hijackster99.tileentities.renderer.PedestalTER;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.gui.IHasContainer;
 import net.minecraft.client.gui.ScreenManager;
-import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.ContainerType;
-import net.minecraft.inventory.container.ContainerType.IFactory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.tileentity.TileEntityType;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -58,10 +54,12 @@ public class ARBase {
 	private void commonSetup(FMLCommonSetupEvent event) {
 		OreGenerator.generate();
 		Ritual.register();
+		ARPacketHandler.register();
 	}
 	
 	private void clientSetup(FMLClientSetupEvent event) {
 		ScreenManager.registerFactory(PedestalContainer.ctPedestal, PedestalScreen::new);
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPedestal.class, new PedestalTER());
 	}
 	
 	@SubscribeEvent
