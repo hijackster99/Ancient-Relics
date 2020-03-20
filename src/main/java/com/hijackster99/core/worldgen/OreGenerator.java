@@ -1,6 +1,5 @@
 package com.hijackster99.core.worldgen;
 
-import com.google.common.collect.ImmutableList;
 import com.hijackster99.blocks.ARBlocks;
 
 import net.minecraft.world.biome.Biome;
@@ -10,8 +9,6 @@ import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraft.world.gen.feature.OreFeatureConfig.FillerBlockType;
 import net.minecraft.world.gen.placement.CountRangeConfig;
 import net.minecraft.world.gen.placement.Placement;
-import net.minecraftforge.common.BiomeManager;
-import net.minecraftforge.common.BiomeManager.BiomeEntry;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class OreGenerator {

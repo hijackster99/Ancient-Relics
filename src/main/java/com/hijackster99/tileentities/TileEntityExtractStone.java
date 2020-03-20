@@ -7,7 +7,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import com.hijackster99.items.ARItems;
 import com.hijackster99.blocks.ARBlocks;
 import com.hijackster99.core.IInteractable;
-import com.hijackster99.core.INetwork;
 import com.hijackster99.core.IVoid;
 import com.hijackster99.core.Ritual;
 
@@ -86,7 +85,7 @@ public class TileEntityExtractStone extends TileEntity implements ITickableTileE
 
 				}
 			}else {
-				if(voidEnergy < MAX_VOID) {
+				if(voidEnergy <= MAX_VOID - vpt) {
 					voidEnergy += vpt;
 				}
 				burnTime -= vpt;

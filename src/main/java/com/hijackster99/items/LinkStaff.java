@@ -1,6 +1,5 @@
 package com.hijackster99.items;
 
-import com.hijackster99.core.INetwork;
 import com.hijackster99.core.IVoid;
 
 import net.minecraft.entity.player.PlayerEntity;

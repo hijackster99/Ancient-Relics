@@ -3,10 +3,8 @@ package com.hijackster99.core;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.hijackster99.tileentities.TileEntityEnergizeStone;
 import com.hijackster99.tileentities.TileEntityExtractStone;
 
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.registries.ObjectHolder;

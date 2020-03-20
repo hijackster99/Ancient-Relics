@@ -8,10 +8,7 @@ import com.hijackster99.items.ARItems;
 import com.hijackster99.core.IInteractable;
 import com.hijackster99.core.INetwork;
 import com.hijackster99.core.IVoid;
-import com.hijackster99.core.Request;
-import com.hijackster99.core.RequestType;
 import com.hijackster99.core.References;
-import com.hijackster99.core.RelayType;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;

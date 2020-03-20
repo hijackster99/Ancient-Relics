@@ -77,7 +77,7 @@ public class EnergizeRecipes implements IRecipe<IInventory> {
 	}
 
 	@Override
-	public IRecipeSerializer getSerializer() {
+	public IRecipeSerializer<?> getSerializer() {
 		return IRecipeSerializer.register("energize_recipes", EnergizeRecipeSerializer.energizeSer);
 	}
 

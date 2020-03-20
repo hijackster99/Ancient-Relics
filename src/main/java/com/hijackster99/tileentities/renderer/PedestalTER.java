@@ -36,8 +36,7 @@ public class PedestalTER extends TileEntityRenderer<TileEntityPedestal> {
 		
 		GlStateManager.pushMatrix();
 		GlStateManager.pushLightingAttributes();
-		//rei.doRender(te.getPedestalRender().getEntity(), x + 0.5, y + 0.625f, z + 0.5, 0, partialTicks);
-		rei.getRenderManager().renderEntity(te.getPedestalRender().getEntity(), x, y, z, 0, partialTicks, false);
+		rei.doRender(te.getPedestalRender().getEntity(), x + 0.5, y + 0.625f, z + 0.5, 0, partialTicks);
 		GlStateManager.popAttributes();
 		GlStateManager.popMatrix();
 

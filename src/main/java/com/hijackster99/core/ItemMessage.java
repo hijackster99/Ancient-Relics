@@ -32,6 +32,7 @@ public class ItemMessage {
 		return new ItemMessage(item, pos);
 	}
 
+	@SuppressWarnings("deprecation")
 	public static void handle(final ItemMessage pkt, Supplier<NetworkEvent.Context> ctx) {
 		ctx.get().enqueueWork(() -> {
 			if(Minecraft.getInstance().world.isBlockLoaded(pkt.pos)) {

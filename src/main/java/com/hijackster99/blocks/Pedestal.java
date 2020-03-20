@@ -6,7 +6,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.container.INamedContainerProvider;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
@@ -39,12 +39,53 @@ public class Pedestal extends ARBlocks {
 	
 	@Override
 	public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
+		System.out.println(player.isSneaking());
 		TileEntity te = worldIn.getTileEntity(pos);
-		if(te instanceof INamedContainerProvider) {
-			INamedContainerProvider ped = (INamedContainerProvider) te;
-			player.openContainer(ped);
+		if(te instanceof TileEntityPedestal) {
+			TileEntityPedestal ped = (TileEntityPedestal) te;
+			if(player.isSneaking()) {
+				if(player.inventory.getStackInSlot(player.inventory.currentItem).isEmpty()) {
+					ItemStack stack = ped.getInventory().getStackInSlot(0);
+					if(!stack.isEmpty()) {
+						if(player.isCreative()) {
+							ped.getInventory().setStackInSlot(0, ItemStack.EMPTY);
+						}else if(player.addItemStackToInventory(stack))
+							ped.getInventory().setStackInSlot(0, ItemStack.EMPTY);
+					}
+					return true;
+				}else {
+					return false;
+				}
+			}else {
+				if(player.inventory.getStackInSlot(player.inventory.currentItem).isEmpty()) {
+					player.openContainer(ped);
+					return true;
+				}else {
+					if(ped.getInventory().getStackInSlot(0).isEmpty()) {
+						if(player.isCreative()) {
+							ItemStack stack1 = player.inventory.getStackInSlot(player.inventory.currentItem);
+							if(!stack1.isEmpty()) {
+								ItemStack stack2 = stack1.copy();
+								stack2.setCount(1);
+								ped.getInventory().setStackInSlot(0, stack2);
+							}
+						}else {
+							ItemStack stack1 = player.inventory.getStackInSlot(player.inventory.currentItem);
+							if(!stack1.isEmpty()) {
+								ItemStack stack2 = stack1.copy();
+								stack1.setCount(stack1.getCount() - 1);
+								stack2.setCount(1);
+								if(stack1.getCount() == 0) stack1 = ItemStack.EMPTY;
+								player.inventory.setInventorySlotContents(player.inventory.currentItem, stack1);
+								ped.getInventory().setStackInSlot(0, stack2);
+							}
+						}
+					}
+					return true;
+				}
+			}
 		}
-		return true;
+		return false;
 	}
 
 	@Override
