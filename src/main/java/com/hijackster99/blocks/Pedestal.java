@@ -39,7 +39,6 @@ public class Pedestal extends ARBlocks {
 	
 	@Override
 	public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
-		System.out.println(player.isSneaking());
 		TileEntity te = worldIn.getTileEntity(pos);
 		if(te instanceof TileEntityPedestal) {
 			TileEntityPedestal ped = (TileEntityPedestal) te;

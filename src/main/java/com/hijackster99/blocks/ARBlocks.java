@@ -45,6 +45,7 @@ public class ARBlocks extends Block{
 	public static RitualStone1 ORE_SAPPHIRE = new RitualStone1("sapphire_ore", Material.ROCK, 4, 5, ToolType.PICKAXE, 2);
 	public static InfuseStone INFUSE_STONE = new InfuseStone("infuse_stone", Material.ROCK, 4, 5, ToolType.PICKAXE, 0);
 	public static Pedestal PEDESTAL = new Pedestal("pedestal", Material.ROCK, 4, 5, ToolType.PICKAXE, 0);
+	public static RelicAnvil RELIC_ANVIL = new RelicAnvil("relic_anvil", Material.ROCK, 4, 5, ToolType.PICKAXE, 0);
 	
 	public static ARBlockItems RUBY_BLOCKITEM = new ARBlockItems(RUBY, 64, ARBase.ARGroup);
 	public static ARBlockItems PERIDOT_BLOCKITEM = new ARBlockItems(PERIDOT, 64, ARBase.ARGroup);
@@ -64,6 +65,7 @@ public class ARBlocks extends Block{
 	public static ARBlockItems ORE_SAPPHIRE_BLOCKITEM = new ARBlockItems(ORE_SAPPHIRE, 64, ARBase.ARGroup);
 	public static ARBlockItems INFUSE_STONE_BLOCKITEM = new ARBlockItems(INFUSE_STONE, 64, ARBase.ARGroup);
 	public static ARBlockItems PEDESTAL_BLOCKITEM = new ARBlockItems(PEDESTAL, 64, ARBase.ARGroup);
+	public static ARBlockItems RELIC_ANVIL_BLOCKITEM = new ARBlockItems(RELIC_ANVIL, 64, ARBase.ARGroup);
 	
 	@Override
 	public ResourceLocation getLootTable() {

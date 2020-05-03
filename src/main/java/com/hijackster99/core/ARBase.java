@@ -3,6 +3,8 @@ package com.hijackster99.core;
 import com.hijackster99.blocks.ARBlocks;
 import com.hijackster99.blocks.containers.PedestalContainer;
 import com.hijackster99.blocks.containers.PedestalScreen;
+import com.hijackster99.blocks.containers.RelicAnvilContainer;
+import com.hijackster99.blocks.containers.RelicAnvilScreen;
 import com.hijackster99.core.config.RelicListConfig;
 import com.hijackster99.core.recipes.EnergizeRecipeSerializer;
 import com.hijackster99.core.recipes.EnergizeRecipes;
@@ -15,6 +17,7 @@ import com.hijackster99.tileentities.TileEntityExtractStone;
 import com.hijackster99.tileentities.TileEntityInfuseStone;
 import com.hijackster99.tileentities.TileEntityPedestal;
 import com.hijackster99.tileentities.TileEntityRelay;
+import com.hijackster99.tileentities.TileEntityRelicAnvil;
 import com.hijackster99.tileentities.renderer.PedestalTER;
 
 import net.minecraft.block.Block;
@@ -66,6 +69,8 @@ public class ARBase {
 	
 	private void clientSetup(FMLClientSetupEvent event) {
 		ScreenManager.registerFactory(PedestalContainer.ctPedestal, PedestalScreen::new);
+		ScreenManager.registerFactory(RelicAnvilContainer.ctAnvil, RelicAnvilScreen::new);
+		
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPedestal.class, new PedestalTER());
 	}
 	
@@ -103,7 +108,8 @@ public class ARBase {
 										ARBlocks.ORE_SAPPHIRE_BLOCKITEM,
 										ARBlocks.RITUAL_STONE_1_BLOCKITEM,
 										ARBlocks.INFUSE_STONE_BLOCKITEM,
-										ARBlocks.PEDESTAL_BLOCKITEM);
+										ARBlocks.PEDESTAL_BLOCKITEM,
+										ARBlocks.RELIC_ANVIL_BLOCKITEM);
 										
 	}
 	
@@ -126,7 +132,8 @@ public class ARBase {
 										ARBlocks.ORE_SAPPHIRE,
 										ARBlocks.RITUAL_STONE_1,
 										ARBlocks.INFUSE_STONE,
-										ARBlocks.PEDESTAL);
+										ARBlocks.PEDESTAL,
+										ARBlocks.RELIC_ANVIL);
 	}
 	
 	@SubscribeEvent
@@ -150,6 +157,10 @@ public class ARBase {
 		TileEntityType<TileEntityPedestal> pedestal = TileEntityType.Builder.create(TileEntityPedestal::new, ARBlocks.PEDESTAL).build(null);
 		pedestal.setRegistryName(References.MODID, "pedestal");
 		event.getRegistry().register(pedestal);
+
+		TileEntityType<TileEntityRelicAnvil> anvil = TileEntityType.Builder.create(TileEntityRelicAnvil::new, ARBlocks.RELIC_ANVIL).build(null);
+		anvil.setRegistryName(References.MODID, "anvil");
+		event.getRegistry().register(anvil);
 	}
 	
 	@SubscribeEvent
@@ -158,6 +169,11 @@ public class ARBase {
 		
 		pedestal.setRegistryName(References.MODID, "pedestal");
 		event.getRegistry().register(pedestal);
+		
+		ContainerType<RelicAnvilContainer> anvil = new ContainerType<RelicAnvilContainer>(RelicAnvilContainer::new);
+		
+		anvil.setRegistryName(References.MODID, "anvil");
+		event.getRegistry().register(anvil);
 	}
 	
 	@SubscribeEvent

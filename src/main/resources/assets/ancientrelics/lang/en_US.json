@@ -25,6 +25,7 @@
 	"block.ancientrelics.peridot_ore": "Peridot Ore",
 	"block.ancientrelics.relay": "Relay",
 	"block.ancientrelics.pedestal": "Pedestal",
+	"block.ancientrelics.relic_anvil": "Relic Anvil",
 	
 	"itemGroup.ancientrelics": "Ancient Relics"
 }

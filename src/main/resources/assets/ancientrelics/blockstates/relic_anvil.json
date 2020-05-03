@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=south": { "model": "ancientrelics:block/relic_anvil" },
+        "facing=west": { "model": "ancientrelics:block/relic_anvil", "y": 90 },
+        "facing=north": { "model": "ancientrelics:block/relic_anvil", "y": 180 },
+        "facing=east": { "model": "ancientrelics:block/relic_anvil", "y": 270 }
+    }
+}

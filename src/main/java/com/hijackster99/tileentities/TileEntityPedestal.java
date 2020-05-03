@@ -1,23 +1,17 @@
 package com.hijackster99.tileentities;
 
-import java.nio.ByteBuffer;
-
 import com.hijackster99.blocks.containers.PedestalContainer;
 import com.hijackster99.core.ARPacketHandler;
 import com.hijackster99.core.ItemMessage;
 import com.hijackster99.core.References;
 import com.hijackster99.core.util.PedestalRender;
 
-import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.text.ITextComponent;
@@ -41,6 +35,10 @@ public class TileEntityPedestal extends TileEntity implements INamedContainerPro
 		}
 		
 	};
+	
+	public TileEntityPedestal() {
+		super(tetPedestal);
+	}
 	
 	@Override
 	public void read(CompoundNBT compound) {
@@ -77,17 +75,12 @@ public class TileEntityPedestal extends TileEntity implements INamedContainerPro
 			pr.getEntity().setWorld(getWorld());
 		
 		if(getWorld().isRemote) {
-			//System.out.println(inventory.getStackInSlot(0));
 			if(getInventory().getStackInSlot(0) != null && !ItemStack.areItemStacksEqual(getInventory().getStackInSlot(0), pr.getEntity().getItem()))
 				pr.getEntity().setItem(getInventory().getStackInSlot(0));
 			}
 	}
 	
 	public void updateEntity(float partialTicks) {
-	}
-
-	public TileEntityPedestal() {
-		super(tetPedestal);
 	}
 
 	public ItemStackHandler getInventory() {

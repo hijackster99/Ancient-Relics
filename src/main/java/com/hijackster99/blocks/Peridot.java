@@ -24,7 +24,7 @@ import net.minecraftforge.common.ToolType;
 
 public class Peridot extends ARBlocks {
 
-static DirectionProperty property = DirectionProperty.create("facing", Direction.values());
+	static DirectionProperty property = DirectionProperty.create("facing", Direction.values());
 	
 	public Peridot(String registryName, Material materialIn, float hardnessIn, float resistanceIn, ToolType harvestTool, int miningLevel) {
 		super(registryName, materialIn, hardnessIn, resistanceIn, harvestTool, miningLevel);
