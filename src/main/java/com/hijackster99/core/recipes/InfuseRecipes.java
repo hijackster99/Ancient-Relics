@@ -1,5 +1,7 @@
 package com.hijackster99.core.recipes;
 
+import java.util.ArrayList;
+
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -31,22 +33,26 @@ public class InfuseRecipes implements IRecipe<IInventory> {
 	
 	@Override
 	public boolean matches(IInventory inv, World worldIn) {
-		boolean match = false;
+		ArrayList<Ingredient> ingrCopy = new ArrayList<Ingredient>();
+		for(Ingredient i : ingrs) {
+			ingrCopy.add(i);
+		}
 		for(Ingredient ingr : ingrs) {
 			ingredient: for(ItemStack stack : ingr.getMatchingStacks()) {
 				for(int i = 1; i < inv.getSizeInventory(); i++) {
 					if(inv.getStackInSlot(i) != null && stack != null && !stack.isEmpty() && ItemStack.areItemStacksEqual(stack, inv.getStackInSlot(i))){
-						match = true;
+						System.out.println(ingrCopy.contains(ingr));
+						ingrCopy.remove(ingr);
 						break ingredient;
 					}
 				}
 			}
 		}
 		for(ItemStack stack : main.getMatchingStacks()) {
-			if(ItemStack.areItemStacksEqual(stack, inv.getStackInSlot(0))) 
-				match = true;
+			if(ItemStack.areItemStacksEqual(stack, inv.getStackInSlot(0)) && ingrCopy.isEmpty()) 
+				return true;
 		}
-		return match;
+		return false;
 	}
 
 	@Override

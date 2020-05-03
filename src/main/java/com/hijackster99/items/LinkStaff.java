@@ -46,6 +46,8 @@ public class LinkStaff extends ARItems {
 							iv.addInput(iv2);
 							iv2.addOutput(iv);
 						}
+						te.markDirty();
+						te2.markDirty();
 					}
 				}
 			}else {

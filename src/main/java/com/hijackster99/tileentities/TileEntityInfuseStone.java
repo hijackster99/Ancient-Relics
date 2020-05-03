@@ -6,6 +6,8 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import org.apache.commons.lang3.ArrayUtils;
+
 import com.google.common.collect.Lists;
 import com.hijackster99.blocks.ARBlocks;
 import com.hijackster99.core.IVoid;
@@ -38,7 +40,6 @@ public class TileEntityInfuseStone extends TileEntity implements ITickableTileEn
 	
 	public TileEntityInfuseStone() {
 		super(Ritual.tetInfuseStone);
-		System.out.println(Ritual.rituals.get("infuse_ritual") == null);
 		stoneIter = Ritual.rituals.get("infuse_ritual").getRelicStones().iterator();
 		ritIter = Ritual.rituals.get("infuse_ritual").getRitualStones().iterator();
 		inVoid = new CopyOnWriteArrayList<IVoid>();
@@ -67,38 +68,37 @@ public class TileEntityInfuseStone extends TileEntity implements ITickableTileEn
 			}
 			if(!checkValid()) world.setBlockState(pos, ARBlocks.RITUAL_STONE_1.getDefaultState());
 			getPedestals();
-			ItemStack[] inputs = getFirstValidRecipe();
-			if(inputs.length > 0) {
-				System.out.println("hello");
-				int energy = getEnergyCost(inputs);
-				Optional<InfuseRecipes> rec = getRecipeForInputs(inputs);
-				Optional<ItemStack> res = getResult(inputs);
-				
-				InfuseRecipes recipe;
-				try {
-					recipe = rec.get();
-				}catch(NoSuchElementException e) {
-					e.printStackTrace();
-					recipe = null;
-				}
-				
-				ItemStack result;
-				try {
-					result = res.get();
-				}catch(NoSuchElementException e) {
-					e.printStackTrace();
-					result = ItemStack.EMPTY;
-				}
-				
-				if(!result.isEmpty() && recipe != null) {
-					if(voidEnergy >= energy) {
-						removeRecipeFromPedestals(recipe);
-						createOutput(result);
-						removeVoid(energy);
+			TileEntity te = world.getTileEntity(pos.add(0, 1, 0));
+			if(te instanceof TileEntityPedestal) {
+				TileEntityPedestal mainPed = (TileEntityPedestal) te;
+				Inventory inv = getInventory(pedestals, mainPed);
+				Optional<InfuseRecipes> recOpt = getRecipe(inv);
+				if(recOpt.isPresent()) {
+					InfuseRecipes rec = recOpt.get();
+					int energy = rec.getVoidEnergy();
+					
+					ItemStack result = rec.getRecipeOutput();
+					System.out.println(rec.matches(inv, world));
+					if(!result.isEmpty() && rec.matches(inv, world)) {
+						if(voidEnergy >= energy) {
+							removeRecipeFromPedestals(rec);
+							createOutput(result);
+							removeVoid(energy);
+						}
 					}
 				}
 			}
 		}
+	}
+	
+	private Inventory getInventory(List<TileEntityPedestal> peds, TileEntityPedestal main) {
+		ItemStack[] items = new ItemStack[peds.size() + 1];
+		items[0] = main.getInventory().getStackInSlot(0);
+		for(int i = 1; i < items.length; i++) {
+			items[i] = peds.get(i - 1).getInventory().getStackInSlot(0);
+		}
+		Inventory inv = new Inventory(items);
+		return inv;
 	}
 	
 	private void removeRecipeFromPedestals(InfuseRecipes recipe) {
@@ -133,7 +133,7 @@ public class TileEntityInfuseStone extends TileEntity implements ITickableTileEn
 		for(int x = -3; x <= 3; x += 3) {
 			for(int y = -3; y <= 3; y += 3) {
 				TileEntity te = world.getTileEntity(pos.add(new Vec3i(x, 1, y)));
-				if(x != 0 && y != 0 && te instanceof TileEntityPedestal) {
+				if(x != 0 || y != 0 && te instanceof TileEntityPedestal) {
 					TileEntityPedestal ped = (TileEntityPedestal) te;
 					pedestals.add(ped);
 				}
@@ -141,43 +141,8 @@ public class TileEntityInfuseStone extends TileEntity implements ITickableTileEn
 		}
 	}
 	
-	private ItemStack[] getFirstValidRecipe() {
-		ItemStack[] inputs = new ItemStack[pedestals.size() + 1];
-		TileEntity te = world.getTileEntity(pos.add(new Vec3i(0, 1, 0)));
-		if(te instanceof TileEntityPedestal) {
-			TileEntityPedestal ped = (TileEntityPedestal) te;
-			inputs[0] = ped.getInventory().getStackInSlot(0);
-			for(int i = 0; i < pedestals.size(); i++) {
-				inputs[i + 1] = pedestals.get(i).getInventory().getStackInSlot(0);
-				if(isInput(inputs))
-					return inputs;
-			}
-		}
-		return new ItemStack[] {};
-	}
-	
 	private Optional<InfuseRecipes> getRecipe(final IInventory inventory) {
 		return world.getRecipeManager().getRecipe(InfuseRecipes.INFUSE_RECIPES, inventory, world);
-    }
-	
-	private short getEnergyCost(final ItemStack... inputs) {
-        return getRecipeForInputs(inputs)
-                .map(InfuseRecipes::getVoidEnergy)
-                .orElse(500)
-                .shortValue();
-    }
-	
-	private boolean isInput(final ItemStack... stacks) {
-        return getRecipeForInputs((ItemStack[])stacks).isPresent();
-    }
-	
-	private Optional<ItemStack> getResult(final ItemStack... inputs) {
-        final Inventory inventory = new Inventory(inputs);
-        return getRecipe(inventory).map(recipe -> recipe.getCraftingResult(inventory));
-    }
-	
-	private Optional<InfuseRecipes> getRecipeForInputs(final ItemStack... inputs) {
-        return getRecipe(new Inventory((ItemStack[])inputs));
     }
 	
 	@Override
@@ -279,12 +244,15 @@ public class TileEntityInfuseStone extends TileEntity implements ITickableTileEn
 
 	@Override
 	public void addInput(IVoid iv) {
-		
+		if(!inVoid.contains(iv))
+			inVoid.add(iv);
+		else 
+			removeInput(iv);
 	}
 
 	@Override
 	public void removeInput(IVoid iv) {
-		
+		inVoid.remove(iv);
 	}
 
 	@Override
