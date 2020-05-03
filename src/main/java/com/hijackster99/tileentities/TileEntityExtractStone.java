@@ -69,7 +69,7 @@ public class TileEntityExtractStone extends TileEntity implements ITickableTileE
 				}
 				tag = null;
 			}
-			checkValid();
+			if(!checkValid()) world.setBlockState(pos, ARBlocks.RITUAL_STONE.getDefaultState());
 			if(burnTime == 0) {
 				List<Entity> entities = getEntities();
 				for(Entity entity : entities) {

@@ -2,6 +2,7 @@ package com.hijackster99.blocks;
 
 import com.hijackster99.blocks.ritual.EnergizeStone;
 import com.hijackster99.blocks.ritual.ExtractStone;
+import com.hijackster99.blocks.ritual.InfuseStone;
 import com.hijackster99.blocks.ritual.RitualStone;
 import com.hijackster99.blocks.ritual.RitualStone1;
 import com.hijackster99.core.ARBase;
@@ -42,7 +43,7 @@ public class ARBlocks extends Block{
 	public static RitualStone1 ORE_PERIDOT = new RitualStone1("peridot_ore", Material.ROCK, 4, 5, ToolType.PICKAXE, 2);
 	public static RitualStone1 ORE_RUBY = new RitualStone1("ruby_ore", Material.ROCK, 4, 5, ToolType.PICKAXE, 2);
 	public static RitualStone1 ORE_SAPPHIRE = new RitualStone1("sapphire_ore", Material.ROCK, 4, 5, ToolType.PICKAXE, 2);
-	public static EnergizeStone INFUSE_STONE = new EnergizeStone("infuse_stone", Material.ROCK, 4, 5, ToolType.PICKAXE, 0);
+	public static InfuseStone INFUSE_STONE = new InfuseStone("infuse_stone", Material.ROCK, 4, 5, ToolType.PICKAXE, 0);
 	public static Pedestal PEDESTAL = new Pedestal("pedestal", Material.ROCK, 4, 5, ToolType.PICKAXE, 0);
 	
 	public static ARBlockItems RUBY_BLOCKITEM = new ARBlockItems(RUBY, 64, ARBase.ARGroup);

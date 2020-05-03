@@ -1,0 +1,36 @@
+{
+  "type": "ancientrelics:infuse_recipes",
+  "ingredients": [
+	{
+      "item": "minecraft:cake"
+	},
+	{
+	  "item": "minecraft:sugar"
+	},
+	{
+	  "item": "minecraft:sugar"
+	},
+	{
+	  "item": "minecraft:sugar"
+	}
+  ],
+  "main": {
+	"item": "ancientrelics:ruby_relic"
+  },
+  "energy": 3200,
+  "result": {
+	"type": "minecraft:item_nbt",
+    "item": "ancientrelics:ruby_relic",
+    "count": 1,
+	"nbt": {
+		"ar_enchant_data": {
+			"LEGGINGS": "LEGGINGS",
+			"MELEE": "MELEE",
+			"RANGED": "RANGED",
+			"BAUBLE": "BAUBLE",
+			"enchant": "speed",
+			"tier": 1
+		}
+	}
+  }
+}

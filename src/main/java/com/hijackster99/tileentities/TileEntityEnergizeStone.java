@@ -1,10 +1,12 @@
 package com.hijackster99.tileentities;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import com.hijackster99.blocks.ARBlocks;
 import com.hijackster99.core.INetwork;
 import com.hijackster99.core.IVoid;
 import com.hijackster99.core.Ritual;
@@ -30,11 +32,14 @@ public class TileEntityEnergizeStone extends TileEntity implements ITickableTile
 	
 	List<IVoid> inVoid;
 	
+	Iterator<BlockPos> stoneIter;
+	
 	CompoundNBT tag = null;
 	
 	public TileEntityEnergizeStone() {
 		super(Ritual.tetEnergizeStone);
 		inVoid = new CopyOnWriteArrayList<IVoid>();
+		stoneIter = Ritual.rituals.get("energize_stone").getRelicStones().iterator();
 	}
 
 	@Override
@@ -60,7 +65,6 @@ public class TileEntityEnergizeStone extends TileEntity implements ITickableTile
 			ItemStack stack = getFirstValidRecipe();
 			if(!stack.isEmpty()) {
 				int energy = getEnergyCost(stack);
-				System.out.println(energy);
 				Optional<ItemStack> result = getResult(stack);
 				
 				ItemStack res;
@@ -79,8 +83,25 @@ public class TileEntityEnergizeStone extends TileEntity implements ITickableTile
 					}
 				}
 			}
+
+			if(!checkValid()) world.setBlockState(pos, ARBlocks.RITUAL_STONE.getDefaultState());
 			
 		}
+	}
+	
+	private boolean checkValid() {
+		if(stoneIter.hasNext()) {
+			if(world.getBlockState(pos.add(stoneIter.next())).getBlock().equals(ARBlocks.INFUSED_STONE))
+				return true;
+			else return false;
+		}else {
+			resetIter();
+			return true;
+		}
+	}
+	
+	private void resetIter() {
+		stoneIter = Ritual.rituals.get("energize_stone").getRelicStones().iterator();
 	}
 	
 	private void spawnItem(ItemStack toSpawn) {

@@ -11,6 +11,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.text.ITextComponent;
@@ -19,7 +20,7 @@ import net.minecraftforge.fml.network.PacketDistributor;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.registries.ObjectHolder;
 
-public class TileEntityPedestal extends TileEntity implements INamedContainerProvider{
+public class TileEntityPedestal extends TileEntity implements INamedContainerProvider {
 	
 	@ObjectHolder(References.MODID + ":pedestal")
 	public static TileEntityType<TileEntityRelay> tetPedestal;
@@ -29,11 +30,23 @@ public class TileEntityPedestal extends TileEntity implements INamedContainerPro
 		protected void onContentsChanged(int slot) {
 			super.onContentsChanged(slot);
 			markDirty();
-			if(!world.isRemote)
+			if(world != null && !world.isRemote)
 				ARPacketHandler.INSTANCE.send(PacketDistributor.NEAR.with(PacketDistributor.TargetPoint.p(pos.getX(), pos.getY(), pos.getZ(), 64, world.getDimension().getType())), new ItemMessage(getStackInSlot(0), pos));
 		}
 		
 	};
+	
+	@Override
+	public void read(CompoundNBT compound) {
+		super.read(compound);
+		inventory.deserializeNBT(compound);
+	}
+	
+	@Override
+	public CompoundNBT write(CompoundNBT compound) {
+		compound = inventory.serializeNBT();
+		return super.write(compound);
+	}
 	
 	private PedestalRender pr = new PedestalRender();
 	

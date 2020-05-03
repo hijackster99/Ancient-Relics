@@ -3,8 +3,11 @@ package com.hijackster99.core;
 import com.hijackster99.blocks.ARBlocks;
 import com.hijackster99.blocks.containers.PedestalContainer;
 import com.hijackster99.blocks.containers.PedestalScreen;
+import com.hijackster99.core.config.RelicListConfig;
 import com.hijackster99.core.recipes.EnergizeRecipeSerializer;
 import com.hijackster99.core.recipes.EnergizeRecipes;
+import com.hijackster99.core.recipes.InfuseRecipeSerializer;
+import com.hijackster99.core.recipes.InfuseRecipes;
 import com.hijackster99.core.worldgen.OreGenerator;
 import com.hijackster99.items.ARItems;
 import com.hijackster99.tileentities.TileEntityEnergizeStone;
@@ -25,8 +28,10 @@ import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -47,6 +52,8 @@ public class ARBase {
 	public ARBase() {
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::commonSetup);
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
+		
+		ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, RelicListConfig.SERVER_SPEC);
 		
 		MinecraftForge.EVENT_BUS.register(this);
 	}
@@ -155,7 +162,16 @@ public class ARBase {
 	
 	@SubscribeEvent
 	public static void registerRecipes(RegistryEvent.Register<IRecipeSerializer<?>> event) {
-		event.getRegistry().registerAll(new EnergizeRecipeSerializer<EnergizeRecipes>(EnergizeRecipes::new));
+		event.getRegistry().registerAll(new EnergizeRecipeSerializer<EnergizeRecipes>(EnergizeRecipes::new),
+										new InfuseRecipeSerializer<InfuseRecipes>(InfuseRecipes::new));
+	}
+	
+	@SubscribeEvent
+	public static void registerModConfigs(final ModConfig.ModConfigEvent event) {
+		final ModConfig config = event.getConfig();
+		if (config.getSpec() == RelicListConfig.SERVER_SPEC) {
+			RelicListConfig.bake(config);
+		}
 	}
 	
 }
