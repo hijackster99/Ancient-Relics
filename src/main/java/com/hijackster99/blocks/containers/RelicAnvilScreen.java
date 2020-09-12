@@ -18,5 +18,10 @@ public class RelicAnvilScreen extends ContainerScreen<RelicAnvilContainer> {
 		minecraft.textureManager.bindTexture(new ResourceLocation(References.MODID, "textures/gui/anvil.png"));
 		blit(getGuiLeft(), getGuiTop(), 0, 0, getXSize(), getYSize());
 	}
+	
+	@Override
+	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
+		renderHoveredToolTip(mouseX - getGuiLeft(), mouseY - getGuiTop());
+	}
 
 }

@@ -5,6 +5,8 @@ import com.hijackster99.blocks.ritual.ExtractStone;
 import com.hijackster99.blocks.ritual.InfuseStone;
 import com.hijackster99.blocks.ritual.RitualStone;
 import com.hijackster99.blocks.ritual.RitualStone1;
+import com.hijackster99.blocks.ritual.RitualStone2;
+import com.hijackster99.blocks.ritual.StorageStone;
 import com.hijackster99.core.ARBase;
 import com.hijackster99.core.References;
 
@@ -46,6 +48,10 @@ public class ARBlocks extends Block{
 	public static InfuseStone INFUSE_STONE = new InfuseStone("infuse_stone", Material.ROCK, 4, 5, ToolType.PICKAXE, 0);
 	public static Pedestal PEDESTAL = new Pedestal("pedestal", Material.ROCK, 4, 5, ToolType.PICKAXE, 0);
 	public static RelicAnvil RELIC_ANVIL = new RelicAnvil("relic_anvil", Material.ROCK, 4, 5, ToolType.PICKAXE, 0);
+	public static ARBlocks INFUSED_STONE_1 = new ARBlocks("infused_stone_1", Material.ROCK, 4, 5, ToolType.PICKAXE, 0);
+	public static StorageStone STORAGE_STONE = new StorageStone("storage_stone", Material.ROCK, 4, 5, ToolType.PICKAXE, 0);
+	public static ARBlocks WEAK_RITUAL_STONE_2 = new ARBlocks("weak_ritual_stone_2", Material.ROCK, 4, 5, ToolType.PICKAXE, 0);
+	public static RitualStone2 RITUAL_STONE_2 = new RitualStone2("ritual_stone_2", Material.ROCK, 4, 5, ToolType.PICKAXE, 0);
 	
 	public static ARBlockItems RUBY_BLOCKITEM = new ARBlockItems(RUBY, 64, ARBase.ARGroup);
 	public static ARBlockItems PERIDOT_BLOCKITEM = new ARBlockItems(PERIDOT, 64, ARBase.ARGroup);
@@ -66,6 +72,10 @@ public class ARBlocks extends Block{
 	public static ARBlockItems INFUSE_STONE_BLOCKITEM = new ARBlockItems(INFUSE_STONE, 64, ARBase.ARGroup);
 	public static ARBlockItems PEDESTAL_BLOCKITEM = new ARBlockItems(PEDESTAL, 64, ARBase.ARGroup);
 	public static ARBlockItems RELIC_ANVIL_BLOCKITEM = new ARBlockItems(RELIC_ANVIL, 64, ARBase.ARGroup);
+	public static ARBlockItems INFUSED_STONE_1_BLOCKITEM = new ARBlockItems(INFUSED_STONE_1, 64, ARBase.ARGroup);
+	public static ARBlockItems STORAGE_STONE_BLOCKITEM = new ARBlockItems(STORAGE_STONE, 64, ARBase.ARGroup);
+	public static ARBlockItems WEAK_RITUAL_STONE_2_BLOCKITEM = new ARBlockItems(WEAK_RITUAL_STONE_2, 64, ARBase.ARGroup);
+	public static ARBlockItems RITUAL_STONE_2_BLOCKITEM = new ARBlockItems(RITUAL_STONE_2, 64, ARBase.ARGroup);
 	
 	@Override
 	public ResourceLocation getLootTable() {

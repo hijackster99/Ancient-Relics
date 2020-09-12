@@ -32,7 +32,7 @@ public class LinkStaff extends ARItems {
 	}
 	
 	@Override
-	public ActionResultType onItemUse(ItemUseContext context) {
+	public ActionResultType onItemUseFirst(ItemStack stack, ItemUseContext context) {
 		if(!context.isPlacerSneaking()) {
 			if(context.getItem().hasTag() && context.getItem().getTag().contains("link")) {
 				CompoundNBT tag = (CompoundNBT) context.getItem().getTag().get("link");
@@ -48,6 +48,7 @@ public class LinkStaff extends ARItems {
 						}
 						te.markDirty();
 						te2.markDirty();
+						return ActionResultType.SUCCESS;
 					}
 				}
 			}else {
@@ -62,10 +63,11 @@ public class LinkStaff extends ARItems {
 					tag.putInt("coordY", context.getPos().getY());
 					tag.putInt("coordZ", context.getPos().getZ());
 					context.getItem().getTag().put("link", tag);
+					return ActionResultType.SUCCESS;
 				}
 			}
 		}
-		return super.onItemUse(context);
+		return super.onItemUseFirst(stack, context);
 	}
 
 }

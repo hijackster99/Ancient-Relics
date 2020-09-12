@@ -5,6 +5,12 @@
       "item": "minecraft:cake"
 	},
 	{
+      "item": "minecraft:cake"
+	},
+	{
+	  "item": "minecraft:sugar"
+	},
+	{
 	  "item": "minecraft:sugar"
 	},
 	{
@@ -12,16 +18,26 @@
 	},
 	{
 	  "item": "minecraft:sugar"
+	},
+	{
+	  "item": "minecraft:sugar"
+	},
+	{
+	  "type": "minecraft:item_nbt",
+	  "item": "minecraft:potion",
+	  "nbt": {
+	    "Potion": "minecraft:swiftness"
+	  }
 	}
   ],
   "main": {
-	"item": "ancientrelics:ruby_relic_1"
+	"item": "ancientrelics:ruby_relic_2"
   },
-  "energy": 3200,
+  "energy": 6400,
   "restriction": "null",
   "result": {
 	"type": "minecraft:item_nbt",
-    "item": "ancientrelics:ruby_relic_1",
+    "item": "ancientrelics:ruby_relic_2",
     "count": 1,
 	"nbt": {
 		"ar_enchant_data": {
@@ -29,7 +45,7 @@
 			"MELEE": "generic.attackSpeed",
 			"RANGED": "null",
 			"BAUBLE": "null",
-			"tier": 1
+			"tier": 2
 		}
 	}
   }

@@ -1,6 +1,7 @@
 {
   "recipes" : {
     "energize_recipes": "com.hijackster99.core.recipes.EnergizeRecipeSerializer",
-    "infuse_recipes": "com.hijackster99.core.recipes.InfuseRecipeSerializer"
+    "infuse_recipes": "com.hijackster99.core.recipes.InfuseRecipeSerializer",
+	"storage_recipes": "com.hijackster99.core.recipes.StorageRecipeSerializer"
   }
 }

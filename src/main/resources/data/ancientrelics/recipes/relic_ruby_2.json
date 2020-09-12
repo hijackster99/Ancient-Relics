@@ -1,0 +1,11 @@
+{
+  "type": "ancientrelics:storage_recipes",
+  "main": {
+      "item": "ancientrelics:ruby_relic_1"
+  },
+  "energy": 5000,
+  "result": {
+    "item": "ancientrelics:ruby_relic_2",
+    "count": 1
+  }
+}

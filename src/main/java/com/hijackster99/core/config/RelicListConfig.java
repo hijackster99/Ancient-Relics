@@ -1,7 +1,7 @@
 package com.hijackster99.core.config;
 
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -65,23 +65,9 @@ public class RelicListConfig {
 		"SHIELD-minecraft:shield",
 		"HELMET-minecraft:turtle_helmet"
 	});
-
-	
-	enum EnumType{
-		TOOL,
-		HELMET,
-		CHESTPLATE,
-		LEGGINGS,
-		BOOTS,
-		MELEE,
-		RANGED,
-		MAGIC,
-		SHIELD,
-		BAUBLE
-	};
 	
 	public static List<String> bakedList;
-	public static Map<EnumType, String> bakedMap;
+	public static Map<String, String> bakedMap;
 	
 	final ForgeConfigSpec.ConfigValue<List<String>> configList;
 	
@@ -97,6 +83,11 @@ public class RelicListConfig {
 	
 	public static void bake(final ModConfig config) {
 		bakedList = SERVER.configList.get();
+		bakedMap = new HashMap<String, String>();
+		for(String s : bakedList) {
+			String[] split = s.split("-", 2);
+			bakedMap.put(split[1], split[0]);
+		}
 	}
 	
 	RelicListConfig(final ForgeConfigSpec.Builder builder){

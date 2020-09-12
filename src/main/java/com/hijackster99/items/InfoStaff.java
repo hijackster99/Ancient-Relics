@@ -28,7 +28,7 @@ public class InfoStaff extends ARItems {
 	}
 	
 	@Override
-	public ActionResultType onItemUse(ItemUseContext context) {
+	public ActionResultType onItemUseFirst(ItemStack stack, ItemUseContext context) {
 		if(!context.getWorld().isRemote() && context.getPlayer().getHeldItem(context.getHand()).getItem().equals(ARItems.INFO_STAFF)) {
 			TileEntity te = context.getWorld().getTileEntity(context.getPos());
 			if(te instanceof IVoid) {

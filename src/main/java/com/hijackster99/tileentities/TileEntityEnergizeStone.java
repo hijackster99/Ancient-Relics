@@ -174,6 +174,7 @@ public class TileEntityEnergizeStone extends TileEntity implements ITickableTile
 		if(!nbt.isEmpty()) {
 			voidEnergy = nbt.getInt("void");
 		}
+		tag = compound;
 	}
 
 	@Override

@@ -75,7 +75,6 @@ public class TileEntityExtractStone extends TileEntity implements ITickableTileE
 				for(Entity entity : entities) {
 					if(entity instanceof ItemEntity) {
 						ItemEntity item = (ItemEntity) entity;
-						System.out.println(getBurnTime(item.getItem()));
 						if(isValidFuel(item.getItem())) {
 							burnTime = getBurnTime(item.getItem());
 							vpt = getVPT(item.getItem());
@@ -182,6 +181,7 @@ public class TileEntityExtractStone extends TileEntity implements ITickableTileE
 	}
 	
 	public int getVPT(ItemStack stack) {
+		if(stack.getItem() == ARItems.CHEAT_COAL) return 200;
 		if(stack.getItem() == ARItems.VOID_CHARCOAL || stack.getItem() == ARItems.VOID_COAL)
 			return 20;
 		return 1;

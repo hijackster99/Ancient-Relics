@@ -33,5 +33,9 @@ public class ARItems extends Item {
 	public static ARItems PERIDOT_RELIC_1 = new PeridotRelic1("peridot_relic_1", 64, ARBase.ARGroup);
 	public static ARItems VOID_COAL = new VoidCoal("void_coal", 64, ARBase.ARGroup);
 	public static ARItems VOID_CHARCOAL = new VoidCharcoal("void_charcoal", 64, ARBase.ARGroup);
+	public static ARItems RUBY_RELIC_2 = new ARItems("ruby_relic_2", 64, ARBase.ARGroup);
+	public static ARItems SAPPHIRE_RELIC_2 = new ARItems("sapphire_relic_2", 64, ARBase.ARGroup);
+	public static ARItems PERIDOT_RELIC_2 = new PeridotRelic1("peridot_relic_2", 64, ARBase.ARGroup);
+	public static ARItems CHEAT_COAL = new CheatCoal("cheat_coal", 64, ARBase.ARGroup);
 
 }

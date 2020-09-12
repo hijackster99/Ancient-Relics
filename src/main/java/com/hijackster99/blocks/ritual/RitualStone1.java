@@ -25,14 +25,12 @@ public class RitualStone1 extends ARBlocks {
 			boolean valid = true;
 			for(BlockPos bp : Ritual.rituals.get("infuse_ritual").getRelicStones()) {
 				if(!worldIn.getBlockState(pos.add(bp)).getBlock().equals(ARBlocks.INFUSED_STONE)) {
-					System.out.println(worldIn.getBlockState(pos.add(bp)).getBlock());
 					valid = false;
 					break;
 				}
 			}
 			for(BlockPos bp : Ritual.rituals.get("infuse_ritual").getRitualStones()) {
 				if(!worldIn.getBlockState(pos.add(bp)).getBlock().equals(ARBlocks.RITUAL_STONE)) {
-					System.out.println(worldIn.getBlockState(pos.add(bp)).getBlock());
 					valid = false;
 					break;
 				}
@@ -40,6 +38,26 @@ public class RitualStone1 extends ARBlocks {
 			if(valid) {
 				worldIn.removeBlock(pos, false);
 				worldIn.setBlockState(pos, ARBlocks.INFUSE_STONE.getDefaultState());
+				return true;
+			}
+			valid = true;
+			for(BlockPos bp : Ritual.rituals.get("storage_ritual").getRelicStones1()) {
+				if(!worldIn.getBlockState(pos.add(bp)).getBlock().equals(ARBlocks.INFUSED_STONE_1)) {
+					System.out.println(pos.add(bp) + ": " + worldIn.getBlockState(pos.add(bp)).getBlock());
+					valid = false;
+					break;
+				}
+			}
+			for(BlockPos bp : Ritual.rituals.get("storage_ritual").getRitualStones()) {
+				if(!worldIn.getBlockState(pos.add(bp)).getBlock().equals(ARBlocks.RITUAL_STONE)) {
+					System.out.println(pos.add(bp) + ": " + worldIn.getBlockState(pos.add(bp)).getBlock());
+					valid = false;
+					break;
+				}
+			}
+			if(valid) {
+				worldIn.removeBlock(pos, false);
+				worldIn.setBlockState(pos, ARBlocks.STORAGE_STONE.getDefaultState());
 				return true;
 			}
 		}

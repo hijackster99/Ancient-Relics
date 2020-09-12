@@ -156,6 +156,7 @@ public class TileEntityRelay extends TileEntity implements IInteractable, ITicka
 		if(!world.isRemote) {
 			if(tag != null) {
 				CompoundNBT nbt = tag.getCompound("arrelay");
+				System.out.println(nbt);
 				if(!nbt.isEmpty()) {
 					voidEnergy = nbt.getInt("void");
 					int[] arrX = nbt.getIntArray("inX");

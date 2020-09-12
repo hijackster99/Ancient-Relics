@@ -1,6 +1,7 @@
 package com.hijackster99.core.recipes;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -20,13 +21,16 @@ public class InfuseRecipes implements IRecipe<IInventory> {
 	protected final Ingredient[] ingrs;
 	protected final Ingredient main;
 	protected final int voidEnergy;
+	protected final String restriction;
+
 	protected final ItemStack result;
 	
-	public InfuseRecipes(ResourceLocation loc, String group, Ingredient[] ingrs, Ingredient main, int voidEnergy, ItemStack result) {
+	public InfuseRecipes(ResourceLocation loc, String group, Ingredient[] ingrs, Ingredient main, int voidEnergy, String restriction, ItemStack result) {
 		this.loc = loc;
 		this.group = group;
 		this.ingrs = ingrs;
 		this.voidEnergy = voidEnergy;
+		this.restriction = restriction;
 		this.result = result;
 		this.main = main;
 	}
@@ -37,12 +41,13 @@ public class InfuseRecipes implements IRecipe<IInventory> {
 		for(Ingredient i : ingrs) {
 			ingrCopy.add(i);
 		}
-		for(Ingredient ingr : ingrs) {
-			ingredient: for(ItemStack stack : ingr.getMatchingStacks()) {
-				for(int i = 1; i < inv.getSizeInventory(); i++) {
+		for(int i = 1; i < inv.getSizeInventory(); i++) {
+			Iterator<Ingredient> ingrIter = ingrCopy.iterator();
+			ingredient: while(ingrIter.hasNext()) {
+				Ingredient ingr = ingrIter.next();
+				for(ItemStack stack : ingr.getMatchingStacks()) {
 					if(inv.getStackInSlot(i) != null && stack != null && !stack.isEmpty() && ItemStack.areItemStacksEqual(stack, inv.getStackInSlot(i))){
-						System.out.println(ingrCopy.contains(ingr));
-						ingrCopy.remove(ingr);
+						ingrIter.remove();
 						break ingredient;
 					}
 				}
@@ -97,6 +102,10 @@ public class InfuseRecipes implements IRecipe<IInventory> {
 
 	public ItemStack getResult() {
 		return result;
+	}
+	
+	public String getRestriction() {
+		return restriction;
 	}
 
 	@Override

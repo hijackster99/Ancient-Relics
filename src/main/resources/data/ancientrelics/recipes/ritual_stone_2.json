@@ -1,0 +1,11 @@
+{
+  "type": "ancientrelics:storage_recipes",
+  "main": {
+      "item": "ancientrelics:weak_ritual_stone_2"
+  },
+  "energy": 1000000,
+  "result": {
+    "item": "ancientrelics:ritual_stone_2",
+    "count": 1
+  }
+}

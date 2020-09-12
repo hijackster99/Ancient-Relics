@@ -13,6 +13,9 @@
 	"item.ancientrelics.sapphire_relic_1": "Relic",
 	"item.ancientrelics.void_coal": "Void Coal",
 	"item.ancientrelics.void_charcoal": "Void Charcoal",
+	"item.ancientrelics.ruby_relic_2": "Relic",
+	"item.ancientrelics.peridot_relic_2": "Relic",
+	"item.ancientrelics.sapphire_relic_2": "Relic",
 	
 	"block.ancientrelics.infused_stone": "Infused Stone",
 	"block.ancientrelics.ritual_stone": "Ritual Stone",
@@ -26,6 +29,9 @@
 	"block.ancientrelics.relay": "Relay",
 	"block.ancientrelics.pedestal": "Pedestal",
 	"block.ancientrelics.relic_anvil": "Relic Anvil",
+	"block.ancientrelics.storage_stone": "Ritual Stone",
+	"block.ancientrelics.infused_stone_1": "Infused Stone",
+	"block.ancientrelics.weak_ritual_stone_2": "Weak Ritual Stone",
 	
 	"itemGroup.ancientrelics": "Ancient Relics"
 }

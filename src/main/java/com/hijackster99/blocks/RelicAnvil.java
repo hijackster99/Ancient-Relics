@@ -201,6 +201,8 @@ public class RelicAnvil extends ARBlocks {
 		TileEntity te = worldIn.getTileEntity(pos);
 		if(te instanceof TileEntityRelicAnvil) {
 			TileEntityRelicAnvil anvil = (TileEntityRelicAnvil) te;
+			if(player.getHeldItemMainhand().hasTag())
+				System.out.println(player.getHeldItemMainhand().getTag());
 			player.openContainer(anvil);
 			return true;
 		}

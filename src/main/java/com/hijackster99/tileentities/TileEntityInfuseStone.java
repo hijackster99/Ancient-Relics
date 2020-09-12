@@ -2,11 +2,8 @@ package com.hijackster99.tileentities;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.concurrent.CopyOnWriteArrayList;
-
-import org.apache.commons.lang3.ArrayUtils;
 
 import com.google.common.collect.Lists;
 import com.hijackster99.blocks.ARBlocks;
@@ -23,6 +20,7 @@ import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
+import net.minecraft.world.dimension.DimensionType;
 
 public class TileEntityInfuseStone extends TileEntity implements ITickableTileEntity, IVoid {
 	
@@ -76,14 +74,16 @@ public class TileEntityInfuseStone extends TileEntity implements ITickableTileEn
 				if(recOpt.isPresent()) {
 					InfuseRecipes rec = recOpt.get();
 					int energy = rec.getVoidEnergy();
-					
-					ItemStack result = rec.getRecipeOutput();
-					System.out.println(rec.matches(inv, world));
-					if(!result.isEmpty() && rec.matches(inv, world)) {
-						if(voidEnergy >= energy) {
-							removeRecipeFromPedestals(rec);
-							createOutput(result);
-							removeVoid(energy);
+					String restriction = rec.getRestriction();
+					if(restriction.equals("null") || restrictionMet(restriction)) {
+						
+						ItemStack result = rec.getRecipeOutput();
+						if(!result.isEmpty() && rec.matches(inv, world)) {
+							if(voidEnergy >= energy) {
+								removeRecipeFromPedestals(rec);
+								createOutput(result);
+								removeVoid(energy);
+							}
 						}
 					}
 				}
@@ -91,11 +91,27 @@ public class TileEntityInfuseStone extends TileEntity implements ITickableTileEn
 		}
 	}
 	
+	private boolean restrictionMet(String restriction) {
+		String[] s = restriction.split(":");
+		if(s[0].equals("dimension")) {
+			return getDimensionType(s[2]) == world.getDimension().getType();
+		}
+		return false;
+	}
+	
+	private DimensionType getDimensionType(String dim) {
+		if(dim.equals("overworld")) return DimensionType.OVERWORLD;
+		else if(dim.equals("the_nether")) return DimensionType.THE_NETHER;
+		else if(dim.equals("the_end")) return DimensionType.THE_END;
+		return DimensionType.OVERWORLD;
+	}
+	
 	private Inventory getInventory(List<TileEntityPedestal> peds, TileEntityPedestal main) {
 		ItemStack[] items = new ItemStack[peds.size() + 1];
 		items[0] = main.getInventory().getStackInSlot(0);
 		for(int i = 1; i < items.length; i++) {
-			items[i] = peds.get(i - 1).getInventory().getStackInSlot(0);
+			if(peds.get(i - 1) != null)
+				items[i] = peds.get(i - 1).getInventory().getStackInSlot(0);
 		}
 		Inventory inv = new Inventory(items);
 		return inv;
@@ -130,6 +146,7 @@ public class TileEntityInfuseStone extends TileEntity implements ITickableTileEn
 	}
 	
 	public void getPedestals() {
+		pedestals.clear();
 		for(int x = -3; x <= 3; x += 3) {
 			for(int y = -3; y <= 3; y += 3) {
 				TileEntity te = world.getTileEntity(pos.add(new Vec3i(x, 1, y)));
@@ -188,9 +205,7 @@ public class TileEntityInfuseStone extends TileEntity implements ITickableTileEn
 			else return false;
 		}else {
 			resetIter();
-			if(world.getBlockState(pos.add(new Vec3i(0, 1, 0))).getBlock().equals(ARBlocks.PEDESTAL))
-				return true;
-			else return false;
+			return true;
 		}
 	}
 	

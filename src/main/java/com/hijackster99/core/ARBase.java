@@ -10,6 +10,8 @@ import com.hijackster99.core.recipes.EnergizeRecipeSerializer;
 import com.hijackster99.core.recipes.EnergizeRecipes;
 import com.hijackster99.core.recipes.InfuseRecipeSerializer;
 import com.hijackster99.core.recipes.InfuseRecipes;
+import com.hijackster99.core.recipes.StorageRecipeSerializer;
+import com.hijackster99.core.recipes.StorageRecipes;
 import com.hijackster99.core.worldgen.OreGenerator;
 import com.hijackster99.items.ARItems;
 import com.hijackster99.tileentities.TileEntityEnergizeStone;
@@ -18,6 +20,7 @@ import com.hijackster99.tileentities.TileEntityInfuseStone;
 import com.hijackster99.tileentities.TileEntityPedestal;
 import com.hijackster99.tileentities.TileEntityRelay;
 import com.hijackster99.tileentities.TileEntityRelicAnvil;
+import com.hijackster99.tileentities.TileEntityStorageStone;
 import com.hijackster99.tileentities.renderer.PedestalTER;
 
 import net.minecraft.block.Block;
@@ -89,7 +92,11 @@ public class ARBase {
 										ARItems.PERIDOT_RELIC_1,
 										ARItems.SAPPHIRE_RELIC_1,
 										ARItems.VOID_CHARCOAL,
-										ARItems.VOID_COAL);
+										ARItems.VOID_COAL,
+										ARItems.RUBY_RELIC_2,
+										ARItems.PERIDOT_RELIC_2,
+										ARItems.SAPPHIRE_RELIC_2,
+										ARItems.CHEAT_COAL);
 		
 		event.getRegistry().registerAll(ARBlocks.PERIDOT_BLOCKITEM,
 										ARBlocks.RUBY_BLOCKITEM,
@@ -109,7 +116,11 @@ public class ARBase {
 										ARBlocks.RITUAL_STONE_1_BLOCKITEM,
 										ARBlocks.INFUSE_STONE_BLOCKITEM,
 										ARBlocks.PEDESTAL_BLOCKITEM,
-										ARBlocks.RELIC_ANVIL_BLOCKITEM);
+										ARBlocks.RELIC_ANVIL_BLOCKITEM,
+										ARBlocks.INFUSED_STONE_1_BLOCKITEM,
+										ARBlocks.STORAGE_STONE_BLOCKITEM,
+										ARBlocks.WEAK_RITUAL_STONE_2_BLOCKITEM,
+										ARBlocks.RITUAL_STONE_2_BLOCKITEM);
 										
 	}
 	
@@ -133,7 +144,11 @@ public class ARBase {
 										ARBlocks.RITUAL_STONE_1,
 										ARBlocks.INFUSE_STONE,
 										ARBlocks.PEDESTAL,
-										ARBlocks.RELIC_ANVIL);
+										ARBlocks.RELIC_ANVIL,
+										ARBlocks.INFUSED_STONE_1,
+										ARBlocks.STORAGE_STONE,
+										ARBlocks.WEAK_RITUAL_STONE_2,
+										ARBlocks.RITUAL_STONE_2);
 	}
 	
 	@SubscribeEvent
@@ -161,6 +176,10 @@ public class ARBase {
 		TileEntityType<TileEntityRelicAnvil> anvil = TileEntityType.Builder.create(TileEntityRelicAnvil::new, ARBlocks.RELIC_ANVIL).build(null);
 		anvil.setRegistryName(References.MODID, "anvil");
 		event.getRegistry().register(anvil);
+
+		TileEntityType<TileEntityStorageStone> storage = TileEntityType.Builder.create(TileEntityStorageStone::new, ARBlocks.STORAGE_STONE).build(null);
+		storage.setRegistryName(References.MODID, "storage_stone");
+		event.getRegistry().register(storage);
 	}
 	
 	@SubscribeEvent
@@ -179,7 +198,8 @@ public class ARBase {
 	@SubscribeEvent
 	public static void registerRecipes(RegistryEvent.Register<IRecipeSerializer<?>> event) {
 		event.getRegistry().registerAll(new EnergizeRecipeSerializer<EnergizeRecipes>(EnergizeRecipes::new),
-										new InfuseRecipeSerializer<InfuseRecipes>(InfuseRecipes::new));
+										new InfuseRecipeSerializer<InfuseRecipes>(InfuseRecipes::new),
+										new StorageRecipeSerializer<StorageRecipes>(StorageRecipes::new));
 	}
 	
 	@SubscribeEvent

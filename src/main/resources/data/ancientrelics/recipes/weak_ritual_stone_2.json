@@ -1,0 +1,26 @@
+{
+  "type": "ancientrelics:infuse_recipes",
+  "ingredients": [
+	{
+      "item": "minecraft:nether_star"
+	},
+	{
+	  "item": "ancientrelics:ruby_relic_2"
+	},
+	{
+	  "item": "ancientrelics:peridot_relic_2"
+	},
+	{
+	  "item": "ancientrelics:sapphire_relic_2"
+	}
+  ],
+  "main": {
+	"item": "ancientrelics:ritual_stone_1"
+  },
+  "energy": 5000,
+  "restriction": "dimension:minecraft:the_end",
+  "result": {
+    "item": "ancientrelics:weak_ritual_stone_2",
+    "count": 1
+  }
+}

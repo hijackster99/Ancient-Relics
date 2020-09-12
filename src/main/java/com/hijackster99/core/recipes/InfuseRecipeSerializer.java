@@ -34,7 +34,7 @@ public class InfuseRecipeSerializer<T extends InfuseRecipes> extends net.minecra
             JsonArray arr = JSONUtils.getJsonArray(json, "ingredients");
             ingrs = new Ingredient[arr.size()];
             for(int i = 0; i < arr.size(); i++) {
-            	ingrs[i] = Ingredient.deserialize(arr.get(i));
+            	ingrs[i] = Ingredient.fromStacks(ShapedRecipe.deserializeItem(arr.get(i).getAsJsonObject()));
             }
 		}else {
             JsonObject obj = JSONUtils.getJsonObject(json, "main");
@@ -45,15 +45,17 @@ public class InfuseRecipeSerializer<T extends InfuseRecipes> extends net.minecra
 		JsonElement main = (JsonElement)(JSONUtils.isJsonArray(json, "main") ?
                 JSONUtils.getJsonArray(json, "main") :
                 JSONUtils.getJsonObject(json, "main"));
-		Ingredient mainI = Ingredient.deserialize(main);
+		Ingredient mainI = Ingredient.fromStacks(ShapedRecipe.deserializeItem(main.getAsJsonObject()));
 	
 		int energy = JSONUtils.getInt(json, "energy");
+		
+		String restriction = JSONUtils.getString(json, "restriction");
 		
 		if (!json.has("result")) throw new com.google.gson.JsonSyntaxException("Missing result, expected to find a string or object");
 		
 		ItemStack result = ShapedRecipe.deserializeItem(JSONUtils.getJsonObject(json, "result"));
 		
-		return this.factory.create(recipeId, group,  ingrs, mainI, energy, result);
+		return this.factory.create(recipeId, group,  ingrs, mainI, energy, restriction, result);
 	}
 
 	@Override
@@ -64,9 +66,10 @@ public class InfuseRecipeSerializer<T extends InfuseRecipes> extends net.minecra
         for(int i = 0; i < size; i++) ingrs[i] = Ingredient.read(buffer);
         Ingredient main = Ingredient.read(buffer);
         int energy = buffer.readVarInt();
+        String restriction = buffer.readString();
         ItemStack result = buffer.readItemStack();
 
-        return this.factory.create(recipeId, group, ingrs, main, energy, result);
+        return this.factory.create(recipeId, group, ingrs, main, energy, restriction, result);
 	}
 
 	@Override
@@ -80,7 +83,7 @@ public class InfuseRecipeSerializer<T extends InfuseRecipes> extends net.minecra
 	}
 	
 	public interface IFactory<T extends InfuseRecipes> {
-        T create(ResourceLocation resourceLocation, String group, Ingredient[] ingrs, Ingredient main, int voidEnergy, ItemStack result);
+        T create(ResourceLocation resourceLocation, String group, Ingredient[] ingrs, Ingredient main, int voidEnergy, String restriction, ItemStack result);
     }
 
 }
